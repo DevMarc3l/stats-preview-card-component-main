@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+
+$primaryCol1: hsl(233, 47%, 7%);
+$primaryCol2: hsl(244, 38%, 16%);
+$highlightCol: hsl(277, 64%, 61%);
+$neutralCol1: hsl(0, 0%, 100%);
+$neutralCol2: hsla(0, 0%, 100%, 0.75);
+$neutralCol3: hsla(0, 0%, 100%, 0.6);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 3rem 1.5rem;
+  background-color: $primaryCol1;
+  color: $neutralCol1;
+  font-family: "Inter", sans-serif;
+}
+
+p {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.highlight {
+  color: $highlightCol;
+}
+
+.card {
+  max-width: 400px;
+  background-color: $primaryCol2;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+
+  &__img {
+    display: block;
+    width: 100%;
+    z-index: 0;
+
+    &__cont {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $highlightCol;
+        z-index: 2;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__info {
+    padding: 1.5rem;
+    line-height: 1.5;
+  }
+
+  &__header {
+    line-height: initial;
+  }
+
+  &__summary {
+    color: $neutralCol2;
+  }
+
+  &__summary,
+  &__stats {
+    font-size: 0.9rem;
+  }
+
+  &__stats {
+    margin-top: 2rem;
+    text-transform: uppercase;
+    color: $neutralCol3;
+
+    & p {
+      margin-top: 1rem;
+    }
+  }
+
+  &__stat {
+    color: $neutralCol1;
+    font-size: 1.4rem;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+.desktop {
+  display: none;
+}
+
+@media (min-width: 750px) {
+  body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+  }
+  .card {
+    max-width: 800px;
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: left;
+
+    &__img__cont {
+      min-width: 45%;
+    }
+
+    &__img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__info {
+      padding: 2.5rem 3rem;
+    }
+
+    &__stats {
+      display: flex;
+      gap: 10%;
+    }
+  }
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}
